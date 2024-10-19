@@ -13,3 +13,16 @@ model User {
     name     String
     password String
 }
+
+model Data {
+    id     Int    @id @default(autoincrement())
+    day    DateTime
+    age    String
+    gender String
+    a      Int
+    b      Int
+    c      Int
+    d      Int
+    e      Int
+    f      Int
+}
