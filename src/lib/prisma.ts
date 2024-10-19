@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
 
 export default prisma;
 
-export function getHumanReadableError(prismaError: PrismaError): string {
+export function getErrorMessage(prismaError: PrismaError): string {
   switch (prismaError.code) {
     case "P2002":
       return `The ${prismaError.meta?.target?.join(
