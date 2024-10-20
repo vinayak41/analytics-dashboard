@@ -3,12 +3,14 @@ import BarChart from "@/components/charts/bar-chart";
 import LineChart from "@/components/charts/line-chart";
 import FilterForm from "@/components/filter-form";
 import { signIn, useSession } from "next-auth/react";
-import { redirect, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Home() {
   const searchParams = useSearchParams();
-  const { data: session, status: sessionStatus } = useSession();
+  const session = useSession();
+  const router = useRouter();
 
   const shouldDisplayBarChart =
     searchParams.get("age") ||
@@ -19,23 +21,19 @@ export default function Home() {
   const category = searchParams.get("category");
 
   useEffect(() => {
-    if (sessionStatus === "unauthenticated") {
+    if (session.status === "unauthenticated") {
       signIn(undefined, { callbackUrl: window.location.href });
     }
-  }, [sessionStatus]);
+  }, [session]);
 
   return (
     <main className="p-4">
-      {session?.user && (
-        <>
-          <FilterForm />
-          {shouldDisplayBarChart && (
-            <div className="flex flex-col gap-2">
-              <BarChart />
-              {category && <LineChart category={category} />}
-            </div>
-          )}
-        </>
+      <FilterForm />
+      {shouldDisplayBarChart && (
+        <div className="flex flex-col gap-2">
+          <BarChart />
+          {category && <LineChart category={category} />}
+        </div>
       )}
     </main>
   );

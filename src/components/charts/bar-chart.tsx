@@ -17,6 +17,8 @@ interface ChartOptions {
   plotOptions: {
     bar: {
       horizontal: boolean;
+      barHeight?: string;
+      distributed?: boolean;
     };
   };
 }
@@ -57,8 +59,6 @@ const BarGraph = () => {
           category,
         }).toString()}`
       );
-
-    // You can perform any action here, like navigating or showing a modal
   };
 
   const options: ChartOptions = useMemo(
@@ -97,6 +97,8 @@ const BarGraph = () => {
       plotOptions: {
         bar: {
           horizontal: true,
+          barHeight: "60%", // Control bar height for large screens
+          // distributed: true, // Distribute bars evenly
         },
       },
       states: {
@@ -126,8 +128,8 @@ const BarGraph = () => {
   );
 
   return (
-    <div className="w-full border rounded-sm">
-      <Chart options={options} series={series} type="bar" width="500" />
+    <div className="w-full lg:max-w-4xl border rounded-sm mx-auto">
+      <Chart options={options} series={series} type="bar" width="100%" />
     </div>
   );
 };
