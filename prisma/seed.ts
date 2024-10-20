@@ -1,3 +1,4 @@
+// @ts-ignore
 import data from "../data.json";
 
 import { PrismaClient } from "@prisma/client";
