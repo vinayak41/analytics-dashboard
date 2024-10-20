@@ -32,7 +32,7 @@ export default function Home() {
       <UserActions />
       <FilterForm />
       {shouldDisplayBarChart && (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col lg:flex-row gap-2">
           <BarChart />
           {category && <LineChart category={category} />}
         </div>
