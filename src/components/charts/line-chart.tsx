@@ -1,3 +1,4 @@
+'use client'
 import { useQuery } from "@/hooks/useQuery";
 import { useSearchParams } from "next/navigation";
 import React, { useMemo } from "react";

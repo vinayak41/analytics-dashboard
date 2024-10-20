@@ -1,12 +1,18 @@
 "use client";
-import BarChart from "@/components/charts/bar-chart";
-import LineChart from "@/components/charts/line-chart";
 import FilterForm from "@/components/filter-form";
 import { UserActions } from "@/components/user-actions";
 import { signIn, useSession } from "next-auth/react";
+import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+
+const BarChart = dynamic(() => import("@/components/charts/bar-chart"), {
+  ssr: false,
+});
+const LineChart = dynamic(() => import("@/components/charts/line-chart"), {
+  ssr: false,
+});
 
 export default function Home() {
   const searchParams = useSearchParams();
