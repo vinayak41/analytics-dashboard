@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -8,10 +8,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Cookies from "js-cookie";
-
 import { DateRangePicker } from "./ui/date-range-picker";
 import { format, parse } from "date-fns";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 const FilterForm = () => {
   const searchParams = useSearchParams();
@@ -23,6 +23,11 @@ const FilterForm = () => {
     });
     const query = { ...Object.fromEntries(searchParams), ...newValue };
     router.push(`/?${new URLSearchParams(query).toString()}`);
+  };
+
+  const copyUrlToClipboard = () => {
+    navigator.clipboard.writeText(window.location.href);
+    alert("URL copied to clipboard");
   };
 
   useEffect(() => {
@@ -115,6 +120,7 @@ const FilterForm = () => {
           }
         />
       </div>
+      <Button onClick={copyUrlToClipboard}>Copy URL</Button>
     </section>
   );
 };
