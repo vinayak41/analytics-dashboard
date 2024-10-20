@@ -19,11 +19,11 @@ export default function Home() {
   const session = useSession();
   const router = useRouter();
 
-  const shouldDisplayBarChart =
-    searchParams.get("age") ||
-    searchParams.get("gender") ||
-    searchParams.get("date_gte") ||
-    searchParams.get("date_lte");
+  // const shouldDisplayBarChart =
+  //   searchParams.get("age") ||
+  //   searchParams.get("gender") ||
+  //   searchParams.get("date_gte") ||
+  //   searchParams.get("date_lte");
 
   const category = searchParams.get("category");
 
@@ -39,12 +39,10 @@ export default function Home() {
         <main className="p-4">
           <UserActions />
           <FilterForm />
-          {shouldDisplayBarChart && (
-            <div className="flex flex-col lg:flex-row gap-2">
-              <BarChart />
-              {category && <LineChart category={category} />}
-            </div>
-          )}
+          <div className="flex flex-col lg:flex-row gap-2">
+            <BarChart />
+            {category && <LineChart category={category} />}
+          </div>
         </main>
       )}
     </>
