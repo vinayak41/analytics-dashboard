@@ -72,7 +72,7 @@ const BarGraph = () => {
       xaxis: {
         categories: Object.keys(data || {}).map((str) => str.toUpperCase()),
         title: {
-          text: "Count",
+          text: "Time Spent",
         },
       },
       yaxis: {
