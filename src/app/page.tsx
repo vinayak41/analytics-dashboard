@@ -34,15 +34,19 @@ export default function Home() {
   }, [session]);
 
   return (
-    <main className="p-4">
-      <UserActions />
-      <FilterForm />
-      {shouldDisplayBarChart && (
-        <div className="flex flex-col lg:flex-row gap-2">
-          <BarChart />
-          {category && <LineChart category={category} />}
-        </div>
+    <>
+      {session.data?.user && (
+        <main className="p-4">
+          <UserActions />
+          <FilterForm />
+          {shouldDisplayBarChart && (
+            <div className="flex flex-col lg:flex-row gap-2">
+              <BarChart />
+              {category && <LineChart category={category} />}
+            </div>
+          )}
+        </main>
       )}
-    </main>
+    </>
   );
 }
