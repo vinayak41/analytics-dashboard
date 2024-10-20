@@ -30,19 +30,19 @@ export default function RegisterPage() {
           </p>
         )}
         <LoginForm />
-        <Link
+        {/* <Link
           className="block text-blue-500 text-center mt-2 mb-4 text-sm"
           href={`/auth/reset-password?${new URLSearchParams(
             searchParams
           ).toString()}`}
         >
           Forgot Password?
-        </Link>
+        </Link> */}
         <p className="text-center mt-2 text-sm text-gray-500">
           Don't have an account?{" "}
           <Link
             className="text-blue-500"
-            href={`/auth/register?${new URLSearchParams(
+            href={`/register?${new URLSearchParams(
               searchParams
             ).toString()}`}
           >

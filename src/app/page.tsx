@@ -2,6 +2,7 @@
 import BarChart from "@/components/charts/bar-chart";
 import LineChart from "@/components/charts/line-chart";
 import FilterForm from "@/components/filter-form";
+import { UserActions } from "@/components/user-actions";
 import { signIn, useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -28,6 +29,7 @@ export default function Home() {
 
   return (
     <main className="p-4">
+      <UserActions />
       <FilterForm />
       {shouldDisplayBarChart && (
         <div className="flex flex-col gap-2">
